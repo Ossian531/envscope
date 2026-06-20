@@ -34,7 +34,9 @@ type viewData struct {
 
 func main() {
 	addr := getenv("FRONTEND_ADDR", ":3000")
-	backendURL := getenv("BACKEND_URL", "http://localhost:8080/")
+	backendURL := getenv("BACKEND_HOST", "localhost")
+	backendPort := getenv("BACKEND_PORT", "8080")
+	backendURL = "http://" + backendURL + ":" + backendPort + "/"
 
 	tmpl := template.Must(template.New("page").Parse(pageTemplate))
 
